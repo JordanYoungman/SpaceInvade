@@ -3,11 +3,12 @@ function Enemy(x, y){
   var rand = Math.floor(Math.random()*color.length);
   this.x = x; //Starts enemy in the center of the canvas
   this.y = y;
+  this.r = 20;
+  this.toDelete = false;
 
     this.show = function(){
       fill(color[rand]);
-      color.splice(rand,1);
-      rect(this.x, this.y, 40, 40);
+      rect(this.x, this.y, this.r*2, this.r*2);
     }
 
     function PowerUpColour() {
@@ -17,6 +18,10 @@ function Enemy(x, y){
         color += letters[Math.floor(Math.random() * 16)];
       }
       return color;
+    }
+
+    this.destroy = function(){
+      this.toDelete = true;
     }
 
 }
